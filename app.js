@@ -50,22 +50,44 @@ function done() {
 
 // Promises
 
-let global = false;
+// let global = false;
 
-let orderingChickenSandwich = new Promise((resolve, reject) => {
-    if (global === true) {
-        let food = {
-            sandwich: "chicken",
-            veggies: "lettuce",
-        }
-        resolve(food);
-    } else {
-        var nope = new Error('I was created using a function call!');
-        reject(nope);
-    }
+// let orderingChickenSandwich = new Promise((resolve, reject) => {
+//     if (global === true) {
+//         let food = {
+//             sandwich: "chicken",
+//             veggies: "lettuce",
+//         }
+//         resolve(food);
+//     } else {
+//         var nope = new Error('I was created using a function call!');
+//         reject(nope);
+//     }
+// });
+
+// function orderfood() {
+//     console.log(orderingChickenSandwich)
+// }
+//orderfood();
+
+// Chaining Promises
+
+let chainNum;
+
+let numberOne = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        chainNum = 1
+        resolve(chainNum)
+    }, 2000)
+}).then(() => {
+    chainNum = chainNum * 2
+    return chainNum
+}).then(() => {
+    chainNum = chainNum * 4
+    return chainNum
+}).then(() => {
+    chainNum = chainNum * 6
+    return chainNum
 });
 
-function orderfood() {
-    console.log(orderingChickenSandwich)
-}
-orderfood();
+console.log(numberOne)
