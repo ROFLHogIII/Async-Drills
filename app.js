@@ -32,29 +32,40 @@ function getWords() {
     }, 1000);
 };
 
-//getWords()
+// getWords()
 
 function countdown(num, callback) {
     let mil = 1000 * num;
     setTimeout(() => {
-        callback;
-    }, 2000);
+        callback();
+    }, mil);
 };
 
 function done() {
     console.log(`Done~!`)
 };
 
-countdown(returnNumber(), done())
+// countdown(returnNumber(), done)
 
 
 // Promises
 
-let global = true;
-const orderingChickenSandwich = new Promise((resolver, reject) => {
-    // do something asynchronous which eventually calls either:
-    //
-    //   resolve(someValue); // fulfilled
-    // or
-    //   reject("failure reason"); // rejected
-  });
+let global = false;
+
+let orderingChickenSandwich = new Promise((resolve, reject) => {
+    if (global === true) {
+        let food = {
+            sandwich: "chicken",
+            veggies: "lettuce",
+        }
+        resolve(food);
+    } else {
+        var nope = new Error('I was created using a function call!');
+        reject(nope);
+    }
+});
+
+function orderfood() {
+    console.log(orderingChickenSandwich)
+}
+orderfood();
