@@ -59,24 +59,17 @@ let orderingChickenSandwich = new Promise((resolve, reject) => {
             veggies: "lettuce",
         }
         resolve(food);
-        return food
     } else {
         var nope = new Error('I was created using a function call!');
         reject(nope);
-        return nope
     }
 });
 
 function orderFood() {
-    console.log(orderingChickenSandwich)
+    orderingChickenSandwich.then((order) => {
+        console.log(order);
+    });
 }
-// function orderFood() {
-//     orderingChickenSandwich.then(() => {
-//         console.log(result);
-//     }, () => {
-//         console.log(result);
-//     });
-// }
 orderFood();
 
 // Chaining Promises
