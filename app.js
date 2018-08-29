@@ -11,9 +11,9 @@ function timesFour() {
     console.log(ranNum * 4)
 };
 
-//setTimeout(() => {
-//    timesFour();
-//}, 2000);
+setTimeout(() => {
+   timesFour();
+}, 2000);
 
 // Callbacks
 
@@ -32,7 +32,7 @@ function getWords() {
     }, 1000);
 };
 
-// getWords()
+getWords()
 
 function countdown(num, callback) {
     let mil = 1000 * num;
@@ -45,7 +45,7 @@ function done() {
     console.log(`Done~!`)
 };
 
-// countdown(returnNumber(), done)
+countdown(returnNumber(), done)
 
 
 // Promises
@@ -91,13 +91,13 @@ numberOne.then((final) => {
 });
 
 
-function deferValue(value, ms) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(value);
-        }, ms);
-    });
-}
+// function deferValue(value, ms) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(value);
+//         }, ms);
+//     });
+// }
 
 // deferValue(1, 1000)
 //     .then((result) => {
