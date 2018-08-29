@@ -50,44 +50,75 @@ function done() {
 
 // Promises
 
-// let global = false;
+let global = true;
 
-// let orderingChickenSandwich = new Promise((resolve, reject) => {
-//     if (global === true) {
-//         let food = {
-//             sandwich: "chicken",
-//             veggies: "lettuce",
-//         }
-//         resolve(food);
-//     } else {
-//         var nope = new Error('I was created using a function call!');
-//         reject(nope);
-//     }
-// });
+let orderingChickenSandwich = new Promise((resolve, reject) => {
+    if (global === true) {
+        let food = {
+            sandwich: "chicken",
+            veggies: "lettuce",
+        }
+        resolve(food);
+        return food
+    } else {
+        var nope = new Error('I was created using a function call!');
+        reject(nope);
+        return nope
+    }
+});
 
-// function orderfood() {
-//     console.log(orderingChickenSandwich)
+function orderFood() {
+    console.log(orderingChickenSandwich)
+}
+// function orderFood() {
+//     orderingChickenSandwich.then(() => {
+//         console.log(result);
+//     }, () => {
+//         console.log(result);
+//     });
 // }
-//orderfood();
+orderFood();
 
 // Chaining Promises
 
-let chainNum;
-
 let numberOne = new Promise((resolve, reject) => {
     setTimeout(() => {
-        chainNum = 1
-        resolve(chainNum)
+        resolve(1);
     }, 2000)
-}).then(() => {
-    chainNum = chainNum * 2
-    return chainNum
-}).then(() => {
-    chainNum = chainNum * 4
-    return chainNum
-}).then(() => {
-    chainNum = chainNum * 6
-    return chainNum
+}).then((result) => {
+    return result * 2;
+}).then((result2) => {
+    return result2 * 4;
+}).then((result3) => {
+    return result3 * 6;
 });
 
-console.log(numberOne)
+numberOne.then((final) => {
+    console.log(final);
+});
+
+
+function deferValue(value, ms) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(value);
+        }, ms);
+    });
+}
+
+// deferValue(1, 1000)
+//     .then((result) => {
+//         console.log(result);
+//         return deferValue(result * 2, 2000);
+//     })
+//     .then((result) => {
+//         console.log(result);
+//         return deferValue(result * 4, 4000);
+//     })
+//     .then((result) => {
+//         console.log(result);
+//         return deferValue(result * 6, 6000);
+//     })
+//     .then((result) => {
+//         console.log(result);
+//     });
